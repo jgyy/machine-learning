@@ -4,7 +4,6 @@
 Simple Linear Regression
 """
 # Importing the library
-import numpy
 from pandas import read_csv
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
