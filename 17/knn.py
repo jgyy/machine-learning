@@ -1,11 +1,11 @@
 """
-Logistic Regression
+K-Nearest Neighbors (K-NN)
 """
 # Importing the libraries
 from pandas import read_csv
 from numpy import concatenate, meshgrid, arange, array, unique
 from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score
 from matplotlib.axes._axes import _log
@@ -28,25 +28,25 @@ X = dataset.iloc[:, :-1].values
 dataset = read_csv("Social_Network_Ads.csv")
 y = dataset.iloc[:, -1].values
 
-# Splitting the dataset into Training set and Test set
+# Splitting the dataset into the Training set and Test set
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.25, random_state=0
 )
 
-# Feature Scaling
+# Feature scaling
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Training the Logistic Regression model on the Training set
-classifier = LogisticRegression(random_state=0)
+# Training the K-NN model on the Training set
+classifier = KNeighborsClassifier(n_neighbors=5, metric="minkowski", p=2)
 classifier.fit(X_train, y_train)
 
 # Predicting a new result
 res = classifier.predict(sc.transform([[30, 151100]]))
 print("Age 30, Salary 151.1k:", res)
 
-# Predicting the test set results
+# Predicting the test set result
 y_pred = classifier.predict(X_test)
 res = concatenate((y_pred.reshape(len(y_pred), 1), (y_test.reshape(len(y_test), 1))), 1)
 print("Test set result:", res[:9])
@@ -57,12 +57,12 @@ print("confusion_matrix:", cm)
 acc = accuracy_score(y_test, y_pred)
 print("accuracy_score", acc)
 
-_log.setLevel('ERROR')
+_log.setLevel("ERROR")
 # Visualising the Training set results
 X_set, y_set = sc.inverse_transform(X_train), y_train
 X1, X2 = meshgrid(
-    arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=0.25),
-    arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=0.25),
+    arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=2),
+    arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=2),
 )
 contourf(
     X1,
@@ -82,7 +82,7 @@ for i, j in enumerate(unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-title("Logical Regression (Training set)")
+title("K-Nearest Neighbors (Training set)")
 xlabel("Age")
 ylabel("Estimated Salary")
 legend()
@@ -91,8 +91,8 @@ show()
 # Visualising the Test set results
 X_set, y_set = sc.inverse_transform(X_test), y_test
 X1, X2 = meshgrid(
-    arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=0.25),
-    arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=0.25),
+    arange(start=X_set[:, 0].min() - 10, stop=X_set[:, 0].max() + 10, step=2),
+    arange(start=X_set[:, 1].min() - 1000, stop=X_set[:, 1].max() + 1000, step=2),
 )
 contourf(
     X1,
@@ -112,7 +112,7 @@ for i, j in enumerate(unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-title("Logical Regression (Test set)")
+title("K-Nearest Neighbors (Test set)")
 xlabel("Age")
 ylabel("Estimated Salary")
 legend()
