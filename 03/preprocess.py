@@ -1,5 +1,3 @@
-# pylint: disable=no-member
-# pylint: disable=import-error
 """
 Section 3: Data Preprocessing in Python
 """
@@ -12,8 +10,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
 
 # Importing the dataset
-dataset = read_csv("./Data.csv")
+dataset = read_csv("Data.csv")
 x_data = dataset.iloc[:, :-1].values
+dataset = read_csv("Data.csv")
 y_data = dataset.iloc[:, -1].values
 print("X data:\n", x_data)
 print("Y data:\n", y_data)

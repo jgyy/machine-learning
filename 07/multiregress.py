@@ -1,5 +1,3 @@
-# pylint: disable=no-member
-# pylint: disable=import-error
 """
 Multiple Linear Regression
 """
@@ -14,6 +12,7 @@ from sklearn.linear_model import LinearRegression
 # Importing the dataset
 dataset = read_csv("./50_Startups.csv")
 x_data = dataset.iloc[:, :-1].values
+dataset = read_csv("./50_Startups.csv")
 y_data = dataset.iloc[:, -1].values
 
 # Encoding categorial data

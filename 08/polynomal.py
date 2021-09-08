@@ -1,5 +1,3 @@
-# pylint: disable=no-member
-# pylint: disable=import-error
 """
 Polynomial Regression
 """
@@ -13,6 +11,7 @@ from sklearn.preprocessing import PolynomialFeatures
 # Importing the dataset
 dataset = read_csv("./Position_Salaries.csv")
 X = dataset.iloc[:, 1:-1].values
+dataset = read_csv("./Position_Salaries.csv")
 y = dataset.iloc[:, -1].values
 
 # Training the Linear Regression model on the whole dataset

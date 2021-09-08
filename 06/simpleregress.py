@@ -1,5 +1,3 @@
-# pylint: disable=no-member
-# pylint: disable=import-error
 """
 Simple Linear Regression
 """
@@ -12,6 +10,7 @@ from matplotlib.pyplot import scatter, plot, title, xlabel, ylabel, show
 # Importing the dataset
 dataset = read_csv("./Salary_Data.csv")
 x_data = dataset.iloc[:, :-1].values
+dataset = read_csv("./Salary_Data.csv")
 y_data = dataset.iloc[:, -1].values
 
 # Splitting the dataset into the Training set and Test set

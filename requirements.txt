@@ -1,4 +1,5 @@
 numpy
 pandas
+warnings
 matplotlib
 scikit-learn

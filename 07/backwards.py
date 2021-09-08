@@ -1,5 +1,3 @@
-# pylint: disable=no-member
-# pylint: disable=import-error
 """
 Multiple Linear Regression in Python - Backward Elimination
 """
@@ -13,6 +11,7 @@ from sklearn.preprocessing import OneHotEncoder
 # Importing the dataset
 dataset = pd.read_csv("./50_Startups.csv")
 X = dataset.iloc[:, :-1].values
+dataset = pd.read_csv("./50_Startups.csv")
 y = dataset.iloc[:, -1].values
 
 # Encoding categorical data
