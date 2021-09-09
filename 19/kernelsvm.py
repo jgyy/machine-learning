@@ -1,7 +1,7 @@
 """
-Support Vector Machine
+Kernel SVM
 """
-# Import the libraries
+# Importing the libraries
 from pandas import read_csv
 from numpy import concatenate, meshgrid, arange, array, unique
 from sklearn.svm import SVC
@@ -28,7 +28,7 @@ X = dataset.iloc[:, :-1].values
 dataset = read_csv("Social_Network_Ads.csv")
 y = dataset.iloc[:, -1].values
 
-# Splitting the dataset into Training set and Test set
+# Splitting the dataset into the Training set and Test set
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.25, random_state=0
 )
@@ -38,8 +38,8 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Training the SVM Model on the Training set
-classifier = SVC(kernel="linear", random_state=0)
+# Training the Kernel SVM model on the Training set
+classifier = SVC(kernel="rbf", random_state=0)
 classifier.fit(X_train, y_train)
 
 # Predicting a new result
@@ -82,7 +82,7 @@ for i, j in enumerate(unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-title("Support Vector Machine (Training set)")
+title("Kernel SVM (Training set)")
 xlabel("Age")
 ylabel("Estimated Salary")
 legend()
@@ -112,7 +112,7 @@ for i, j in enumerate(unique(y_set)):
         c=ListedColormap(("red", "green"))(i),
         label=j,
     )
-title("Support Vector Machine (Test set)")
+title("Kernel SVM (Test set)")
 xlabel("Age")
 ylabel("Estimated Salary")
 legend()
