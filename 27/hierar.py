@@ -6,7 +6,7 @@ from random import shuffle
 from pandas import read_csv
 from sklearn.cluster import AgglomerativeClustering
 from scipy.cluster.hierarchy import dendrogram, linkage
-from matplotlib.pyplot import plot, title, xlabel, ylabel, show, scatter, legend
+from matplotlib.pyplot import title, xlabel, ylabel, show, scatter, legend
 
 # Importing the dataset
 dataset = read_csv("Mall_Customers.csv")

@@ -1,6 +1,5 @@
 numpy
 scipy
 pandas
-warnings
 matplotlib
 scikit-learn
