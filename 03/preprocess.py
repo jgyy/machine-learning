@@ -1,5 +1,5 @@
 """
-Section 3: Data Preprocessing in Python
+Data Preprocessing
 """
 # Importing the Libraries
 from numpy import nan, array
