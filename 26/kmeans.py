@@ -2,7 +2,7 @@
 K-Means Clustering
 """
 # Importing the libraries
-import numpy
+from random import shuffle
 from pandas import read_csv
 from sklearn.cluster import KMeans
 from matplotlib.pyplot import plot, title, xlabel, ylabel, show, scatter, legend
@@ -28,7 +28,22 @@ kmeans = KMeans(n_clusters=5, init="k-means++", random_state=42)
 y_kmeans = kmeans.fit_predict(X)
 
 # Visualising the clusters
-for i, color in enumerate(["red", "blue", "green", "cyan", "magenta"]):
+colors = [
+    "maroon",
+    "red",
+    "purple",
+    "fuchsia",
+    "green",
+    "lime",
+    "olive",
+    "yellow",
+    "navy",
+    "blue",
+    "teal",
+    "aqua",
+]
+shuffle(colors)
+for i, color in enumerate(colors[:5]):
     scatter(
         X[y_kmeans == i, 0], X[y_kmeans == i, 1], s=100, c=color, label=f"Cluster {i+1}"
     )
@@ -36,7 +51,7 @@ scatter(
     kmeans.cluster_centers_[:, 0],
     kmeans.cluster_centers_[:, 1],
     s=300,
-    c="yellow",
+    c=colors[5],
     label="Centroids",
 )
 title("Clusters of Customers")
