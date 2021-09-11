@@ -18,7 +18,8 @@ regressor = RandomForestRegressor(n_estimators=10, random_state=0)
 regressor.fit(X, y)
 
 # Predicting a new result
-result = regressor.predict([[6.5]])
+POSITION_LEVEL = 6.5
+result = regressor.predict([[POSITION_LEVEL]])
 print(result)
 
 # Visualising the Random Forest Regression result (higher resolution)

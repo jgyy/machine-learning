@@ -1,0 +1,11 @@
+nltk
+black
+numpy
+scipy
+pandas
+pylint
+opt_einsum
+matplotlib
+tensorboard
+scikit-learn
+keras-preprocessing
