@@ -8,6 +8,7 @@ from matplotlib.pyplot import hist, title, xlabel, ylabel, show
 
 # Importing the dataset
 dataset = read_csv("Ads_CTR_Optimisation.csv")
+rewards = read_csv("Ads_CTR_Optimisation.csv").values
 
 # Implementing UCB
 N = len(dataset)
@@ -16,8 +17,6 @@ ads_selected = []
 numbers_of_selections = [0] * D
 sums_of_rewards = [0] * D
 TOTAL_REWARDS = 0
-dataset = read_csv("Ads_CTR_Optimisation.csv")
-rewards = dataset.values
 for n in range(N):
     AD = 0
     MAX_UPPER_BOUND = 0
@@ -37,7 +36,7 @@ for n in range(N):
     sums_of_rewards[AD] += reward
     TOTAL_REWARDS += reward
 
-# Visualising the results
+# Visualising the results - Histogram
 hist(ads_selected)
 title("Histogram of ads selections")
 xlabel("Ads")
