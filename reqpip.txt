@@ -1,3 +1,4 @@
 apyori
+xgboost
 tensorflow-metal
 tensorflow-macos

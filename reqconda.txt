@@ -4,6 +4,7 @@ numpy
 scipy
 pandas
 pylint
+lightgbm
 matplotlib
 scikit-learn
 tensorflow-deps
