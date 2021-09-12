@@ -1,14 +1,14 @@
 """
-Linear Discriminant Analysis (LDA)
+Kernel PCA
 """
 # Importing the libraries
 from pandas import read_csv
 from numpy import meshgrid, arange, array, unique
+from sklearn.decomposition import KernelPCA
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, accuracy_score
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from matplotlib.axes._axes import _log
 from matplotlib.colors import ListedColormap
 from matplotlib.pyplot import (
@@ -39,10 +39,10 @@ sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.transform(X_test)
 
-# Applying LDA
-lda = LinearDiscriminantAnalysis(n_components=2)
-X_train = lda.fit_transform(X_train, y_train)
-X_test = lda.transform(X_test)
+# Applying Kernel PCA
+kpca = KernelPCA(n_components=2, kernel="rbf")
+X_train = kpca.fit_transform(X_train)
+X_test = kpca.transform(X_test)
 
 # Training the Logical Regression model on the Training set
 classifier = LogisticRegression(random_state=0)
@@ -78,9 +78,9 @@ for i, j in enumerate(unique(y_set)):
         c=ListedColormap(("red", "green", "blue"))(i),
         label=j,
     )
-title("Logical Regression with LDA (Training set)")
-xlabel("LD1")
-ylabel("LD2")
+title("Logical Regression with KPCA (Training set)")
+xlabel("KPC1")
+ylabel("KPC2")
 legend()
 show()
 
@@ -106,8 +106,8 @@ for i, j in enumerate(unique(y_set)):
         c=ListedColormap(("red", "green", "blue"))(i),
         label=j,
     )
-title("Logical Regression with LDA (Test set)")
-xlabel("LD1")
-ylabel("LD2")
+title("Logical Regression with KPCA (Test set)")
+xlabel("KPC1")
+ylabel("KPC2")
 legend()
 show()
