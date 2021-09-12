@@ -13,15 +13,15 @@ conda config --set auto_activate_base false
 Create a new conda environment with the command below and activate it afterwards.
 
 ```sh
-conda env create --file=env.yaml --name tf_m1
-conda activate tf_m1
+conda env create --file=env.yaml --name=m1
+conda activate m1
 ```
 
 Finally, I can install the packages all stated in requirements.txt. So far apyori and tensorflow is unavailable in conda, hence it is installed using pip command instead.
 
 ```sh
-conda install -n tf_m1 --file reqconda.txt
-pip install --no-dependencies -r reqpip.txt
+conda install -n m1 --file reqconda.txt -c apple
+GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1 GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1 pip install -r reqpip.txt
 ```
 
 ## Python select interpretator VScode
